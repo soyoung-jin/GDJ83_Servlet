@@ -1,14 +1,20 @@
 package com.winter.home.weather;
 
-public class Weather {
+public class WeatherDTO {
 
+	private long num;
 	private String city;
-	// 기온
 	private double gion;
-	// 날씨정보
 	private String status;
-	// 습도
-	private int humidity;
+	private int huminity;
+
+	public long getNum() {
+		return num;
+	}
+
+	public void setNum(long num) {
+		this.num = num;
+	}
 
 	public String getCity() {
 		return city;
@@ -34,12 +40,12 @@ public class Weather {
 		this.status = status;
 	}
 
-	public int getHumidity() {
-		return humidity;
+	public int getHuminity() {
+		return huminity;
 	}
 
-	public void setHumidity(int humidity) {
-		this.humidity = humidity;
+	public void setHuminity(int huminity) {
+		this.huminity = huminity;
 	}
 
 }
