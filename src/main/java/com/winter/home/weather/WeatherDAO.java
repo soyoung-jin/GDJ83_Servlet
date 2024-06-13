@@ -70,10 +70,25 @@ public class WeatherDAO {
 	}
 
 	// add메서드
-	public void add(WeatherDTO weatherDTO) {
+	public void add(WeatherDTO weatherDTO) throws Exception {
 		/*
 		 * 도시명-기온-상태-습도 가 나오는 것을 먼저 테스트 해봄 (Stringbuffer사용)
 		 */
+
+		List<WeatherDTO> ar = this.getWeathers();
+
+		StringBuffer sb = new StringBuffer();
+		sb.append(ar.size() + 1); // 번호 추가
+		sb.append("-");
+		sb.append(weatherDTO.getCity());
+		sb.append("-");
+		sb.append(weatherDTO.getGion());
+		sb.append("-");
+		sb.append(weatherDTO.getStatus());
+		sb.append("-");
+		sb.append(weatherDTO.getHumidity());
+
+		File file = new File("C:\\Study", "weather.test.txt");
 
 	}
 

@@ -36,6 +36,9 @@ public class FrontController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		request.setCharacterEncoding("UFT-8");
+		response.setCharacterEncoding("UFT-8");
 		System.out.println("실행됨");
 
 		Action action = new Action();
