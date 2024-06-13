@@ -40,4 +40,10 @@ public class WeatherService {
 		return weatherDTO;
 	}
 
+	// add하는 메서드
+	public void getAdd(WeatherDTO weatherDTO) throws Exception { // 입력 받은걸 저장하려면 파일에 저장해주는 DTO에 보내줘야 힘
+		weatherDAO = new WeatherDAO();
+		weatherDAO.add(weatherDTO);
+
+	}
 }

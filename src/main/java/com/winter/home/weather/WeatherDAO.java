@@ -69,4 +69,12 @@ public class WeatherDAO {
 
 	}
 
+	// add메서드
+	public void add(WeatherDTO weatherDTO) {
+		/*
+		 * 도시명-기온-상태-습도 가 나오는 것을 먼저 테스트 해봄 (Stringbuffer사용)
+		 */
+
+	}
+
 }
