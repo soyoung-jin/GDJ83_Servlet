@@ -15,7 +15,13 @@ public class WeatherController {
 	}
 
 	public Action start(HttpServletRequest request) {
+		// /weather/***
+		// list
+		// add
+		// delete
+		// detail
 
+		// /weather/list
 		String uri = request.getRequestURI();
 
 		uri = uri.substring(uri.lastIndexOf("/") + 1);
@@ -37,7 +43,21 @@ public class WeatherController {
 		} else if (uri.equals("delete")) {
 
 		} else if (uri.equals("detail")) {
-			action.setPath("/WEB-INF/views/weather/detail.jsp");
+			// 파라미터 꺼내기
+			String num = request.getParameter("num");
+			WeatherDTO weatherDTO = new WeatherDTO();
+			weatherDTO.setNum(Long.parseLong(num));
+			weatherDTO = ws.getDetail(weatherDTO);
+
+			if (weatherDTO != null) {
+				request.setAttribute("dto", weatherDTO); // (키,밸류)
+				action.setPath("/WEB-INF/views/weather/detail.jsp");
+
+			} else {
+				request.setAttribute("message", "정보가 없습니다.");
+				action.setPath("/WEB-INF/views/commons/message.jsp");
+			}
+
 		} else {
 
 		}

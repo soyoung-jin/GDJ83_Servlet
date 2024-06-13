@@ -1,4 +1,4 @@
-package com.winter.student;
+package com.winter.home.student;
 
 import java.util.List;
 
@@ -37,14 +37,14 @@ public class StudentController {
 		String method = request.getMethod();
 
 		if (uri.equals("list")) {
-			List<Student> ar = studentService.getStudents();
+			List<StudentDTO> ar = studentService.getStudent();
 			request.setAttribute("list", ar);
 			// jsp의 경로를 담아야 하며, 절대경로로 적는다.
 			action.setPath("/WEB-INF/views/student/list.jsp");
 		} else if (uri.equals("add")) {
 			if (method.toUpperCase().equals("POST")) {
 				System.out.println("학생 등록 데이터를 꺼내야 함");
-				Student student = new Student();
+				StudentDTO student = new StudentDTO();
 				String name = request.getParameter("name");
 				System.out.println(name);
 				student.setName(name);
@@ -69,9 +69,22 @@ public class StudentController {
 		} else if (uri.equals("delete")) {
 
 		} else if (uri.equals("detail")) {
-			Student student = this.studentService.makeStudent();
-			request.setAttribute("student", student); // jsp까지 보내주기 위해 지역변수로 소멸되지 않는 request사용
-			action.setPath("/WEB-INF/views/student/detail.jsp");
+
+			String num = request.getParameter("num");
+			StudentDTO studentDTO = new StudentDTO();
+
+			studentDTO.setNum(Integer.parseInt(num));
+			studentDTO = studentService.getDetail(studentDTO);
+
+			if (studentDTO != null) {
+				request.setAttribute("student", studentDTO); // jsp까지 보내주기 위해 지역변수로 소멸되지 않는 request사용
+				action.setPath("/WEB-INF/views/student/detail.jsp");
+
+			} else {
+				request.setAttribute("message", "정보를 찾을 수 없습니다.");
+				action.setPath("/WEB-INF/views/commons/message.jsp");
+			}
+
 		} else {
 
 		}

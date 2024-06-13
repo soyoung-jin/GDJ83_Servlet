@@ -7,14 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>오늘 날씨 정보</h1>
-	
-	<h3>${requestScope.dto.city}</h3>
-	<h3>${requestScope.dto.gion}</h3>
-	<h3>${requestScope.dto.status}</h3>
-	<h3>${requestScope.dto.humidity}</h3>
-	
-	
+	<h1>${requestScope.message}</h1>
 
 </body>
 </html>

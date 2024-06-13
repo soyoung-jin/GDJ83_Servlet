@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.winter.home.student.StudentController;
 import com.winter.home.weather.WeatherController;
-import com.winter.student.StudentController;
 
 /**
  * Servlet implementation class HomeController
@@ -55,17 +55,14 @@ public class FrontController extends HttpServlet {
 			StudentController st = new StudentController();
 			action = st.start(request);
 
-			System.out.println(action.getPath());
-
 		} else if (p[1].equals("weather")) {
 
 			WeatherController wc = new WeatherController();
 			action = wc.start(request);
-			System.out.println(action.getPath());
 
 		}
 		if (action.isFlag()) {
-			System.out.println(action.getPath());
+
 			RequestDispatcher view = request.getRequestDispatcher(action.getPath());
 			view.forward(request, response); // jsp로 이동하자! 는 거임 이 코드는 이 메서드 내에서 한번만 실행되게끔 해야 한다.
 

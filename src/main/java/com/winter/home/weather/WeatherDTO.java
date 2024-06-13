@@ -6,7 +6,7 @@ public class WeatherDTO {
 	private String city;
 	private double gion;
 	private String status;
-	private int huminity;
+	private int humidity;
 
 	public long getNum() {
 		return num;
@@ -40,12 +40,12 @@ public class WeatherDTO {
 		this.status = status;
 	}
 
-	public int getHuminity() {
-		return huminity;
+	public int getHumidity() {
+		return humidity;
 	}
 
-	public void setHuminity(int huminity) {
-		this.huminity = huminity;
+	public void setHumidity(int humidity) {
+		this.humidity = humidity;
 	}
 
 }

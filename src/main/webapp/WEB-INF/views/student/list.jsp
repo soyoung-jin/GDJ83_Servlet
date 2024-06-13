@@ -17,18 +17,18 @@
 	
 	<table class="tbl" border = "1">
 		<thead>
-			<tr>
+			
 				<th>NUM</th>
-				<th>SUM</th>
+				<th>NAME</th>
 				<th>AVG</th>
-			</tr>
+			
 		</thead>	
 		<tbody>
 			<c:forEach items="${requestScope.list}" var ="student">
 				<tr>
-					<td>번호 : ${pageScope.student.num} </td>
-					<td>이름 : ${pageScope.student.name}</td>
-					<td>평균 : ${pageScope.student.avg}</td>
+					<td>${pageScope.student.num} </td>
+					<td><a href="./detail?num=${pageScope.student.num}">${pageScope.student.name}</a></td>
+					<td>${pageScope.student.avg}</td>
 				<tr>
 			</c:forEach>
 		</tbody>

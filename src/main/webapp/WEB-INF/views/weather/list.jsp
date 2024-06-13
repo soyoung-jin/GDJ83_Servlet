@@ -11,20 +11,24 @@
 <body>
 	<h1>날씨 정보 리스트</h1>
 	
-	<table class="tbl">
+	<table border="1" class="tbl">
 		<thead>
-			<tr>
+				<th>NUM</th>
+				<th>CITY</th>
+				<th>GION</th>
+				<th>STATUS</th>
+				<th>HUMIDITY</th>
 				
-				<th>City</th>
-				<th>Gion</th>
-			</tr>
+			
 		</thead>
 		<tbody>
-			<c:forEach items="${requestScope.list}" var="w">
+			<c:forEach items="${requestScope.list}" var="wdto">
 				<tr>
-					
-					<td><a href="./detail">${pageScope.w.city}</a></td>
-					<td>${pageScope.w.gion}</td>
+					<td>${pageScope.wdto.num}</td>
+					<td><a href="./detail?num=${pageScope.wdto.num}">${pageScope.wdto.city}</a></td>
+					<td>${pageScope.wdto.gion}</td>
+					<td>${pageScope.wdto.status}</td>
+					<td>${pageScope.wdto.humidity}</td>
 				</tr>
 			</c:forEach>
 			
