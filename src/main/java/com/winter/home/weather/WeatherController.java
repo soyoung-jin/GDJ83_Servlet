@@ -61,6 +61,10 @@ public class WeatherController {
 					e.printStackTrace();
 				}
 
+				action.setPath("/weather/list");
+				// 상대경로 (./ 생략가능) list
+				action.setFlag(false); // false로 바꿔서 리턴해줘야 frontcontroller에서 if의 else문을 감
+
 			} else {
 
 				action.setPath("/WEB-INF/views/weather/add.jsp");

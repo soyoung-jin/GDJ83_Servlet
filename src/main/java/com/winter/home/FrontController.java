@@ -37,8 +37,8 @@ public class FrontController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		request.setCharacterEncoding("UFT-8");
-		response.setCharacterEncoding("UFT-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		System.out.println("실행됨");
 
 		Action action = new Action();
@@ -71,7 +71,8 @@ public class FrontController extends HttpServlet {
 
 		} else {
 
-			response.sendRedirect(action.getPath());
+			response.sendRedirect(action.getPath()); // jsp찾으러가지말고 바로 응답으로 내보라는 것
+			// 그 안에 매개변수로 니가 다시 접속할 url을 주는 것이다.
 
 		}
 

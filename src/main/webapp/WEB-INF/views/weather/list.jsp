@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resources/css/tables.css" rel="stylesheet">
+<link href="/resources/css/NewFile.css" rel="stylesheet">
 </head>
 <body>
 	<h1>날씨 정보 리스트</h1>
 	
-	<table border="1" class="tbl">
+	<table  class="tbl">
 		<thead>
 				<th>NUM</th>
 				<th>CITY</th>
