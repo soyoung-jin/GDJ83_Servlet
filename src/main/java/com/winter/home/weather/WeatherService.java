@@ -46,4 +46,9 @@ public class WeatherService {
 		weatherDAO.add(weatherDTO);
 
 	}
+
+	// 지우려는 메서드
+	public void getdelete(WeatherDTO weatherDTO) throws Exception {
+
+	}
 }

@@ -71,6 +71,8 @@ public class WeatherController {
 			}
 
 		} else if (uri.equals("delete")) {
+			// 하나 지우려고 함
+			String num = request.getParameter("num");
 
 		} else if (uri.equals("detail")) {
 			// 파라미터 꺼내기
@@ -88,10 +90,23 @@ public class WeatherController {
 				action.setPath("/WEB-INF/views/commons/message.jsp");
 			}
 
+		} else if (uri.equals("update")) {
+
+			if (method.toUpperCase().equals("POST")) {
+
+			} else {
+				WeatherDTO weatherDTO = new WeatherDTO();
+				weatherDTO.setNum(Long.parseLong(request.getParameter("num")));
+				weatherDTO = ws.getDetail(weatherDTO);
+
+				request.setAttribute("dto", weatherDTO);
+				action.setPath("/WEB-INF/views/weather/update.jsp");
+
+			}
+
 		} else {
 
 		}
-
 		return action;
 
 	}

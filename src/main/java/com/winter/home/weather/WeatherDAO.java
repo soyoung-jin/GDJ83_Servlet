@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class WeatherDAO {
@@ -79,7 +80,8 @@ public class WeatherDAO {
 		List<WeatherDTO> ar = this.getWeathers();
 
 		StringBuffer sb = new StringBuffer();
-		sb.append(ar.size() + 1); // 번호 추가
+		Calendar ca = Calendar.getInstance();
+		sb.append(ca.getTimeInMillis()); // 번호 추가
 		sb.append("-");
 		sb.append(weatherDTO.getCity());
 		sb.append("-");
@@ -90,10 +92,49 @@ public class WeatherDAO {
 		sb.append(weatherDTO.getHumidity());
 
 //		File file = new File("C:\\Study", "weather.test.txt");사실 굳이 안만들어도 됨
-		File file = new File("C:\\\\Study\\\\weather.test.txt");
+		File file = new File("C:\\Study\\weather.test.txt");
 		FileWriter fw = new FileWriter(file, true);
 		fw.write(sb.toString() + "\r\n");// carriage return
 		fw.flush();
+		fw.close();
+
+	}
+
+	// 지우는 메서드
+	public void delete(WeatherDTO weatherDTO) throws Exception {
+		// list를 호출 , 지우려하는 num과 일치하는 것을 list에서 삭제
+		// list를 파일에 다시 저장
+		// 지우고 나서 list로 돌아감 redirect사용
+
+		List<WeatherDTO> list = this.getWeathers();
+		for (WeatherDTO w : list) {
+			if (w.getNum() == weatherDTO.getNum()) {
+				list.remove(w);
+				break;
+
+			}
+		}
+
+		File file = new File("C:\\Study\\weather.test.txt");
+		FileWriter fw = new FileWriter(file, false);
+
+		for (WeatherDTO w : list) {
+			StringBuffer sb = new StringBuffer();
+
+			sb.append(w.getNum()); // 번호 추가
+			sb.append("-");
+			sb.append(weatherDTO.getCity());
+			sb.append("-");
+			sb.append(weatherDTO.getGion());
+			sb.append("-");
+			sb.append(weatherDTO.getStatus());
+			sb.append("-");
+			sb.append(weatherDTO.getHumidity());
+
+			fw.write(sb.toString() + "\r\n");
+			fw.flush();
+		}
+
 		fw.close();
 
 	}
