@@ -93,6 +93,20 @@ public class WeatherController {
 		} else if (uri.equals("update")) {
 
 			if (method.toUpperCase().equals("POST")) {
+				WeatherDTO weatherDTO = new WeatherDTO();
+				weatherDTO.setNum(Long.parseLong(request.getParameter("num")));
+				String city = request.getParameter("city");
+				double gion = Double.parseDouble(request.getParameter("gion"));
+				int humidity = Integer.parseInt(request.getParameter("humidity"));
+				String status = request.getParameter("status");
+				weatherDTO.setCity(city);
+				weatherDTO.setGion(gion);
+				weatherDTO.setHumidity(humidity);
+				weatherDTO.setStatus(status);
+//				ws.update(weatherDTO);
+
+				action.setFlag(false);
+				action.setPath("./list"); // 리다이렉트면 다시 돌아갈 url, 아니면 jsp파일로
 
 			} else {
 				WeatherDTO weatherDTO = new WeatherDTO();

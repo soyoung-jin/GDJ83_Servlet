@@ -139,4 +139,36 @@ public class WeatherDAO {
 
 	}
 
+	public void update(WeatherDTO weatherDTO) throws Exception {
+		List<WeatherDTO> list = this.getWeathers();
+		for (int i = 0; i < list.size(); i++) {
+
+			if (weatherDTO.getNum() == list.get(i).getNum()) {
+				list.get(i).setCity(weatherDTO.getCity());
+				list.set(i, weatherDTO);
+			}
+		}
+		File file = new File("C:\\Study\\weather.test.txt");
+		FileWriter fw = new FileWriter(file, false);
+
+		for (WeatherDTO w : list) {
+			StringBuffer sb = new StringBuffer();
+
+			sb.append(w.getNum()); // 번호 추가
+			sb.append("-");
+			sb.append(weatherDTO.getCity());
+			sb.append("-");
+			sb.append(weatherDTO.getGion());
+			sb.append("-");
+			sb.append(weatherDTO.getStatus());
+			sb.append("-");
+			sb.append(weatherDTO.getHumidity());
+
+			fw.write(sb.toString() + "\r\n");
+			fw.flush();
+		}
+
+		fw.close();
+	}
+
 }

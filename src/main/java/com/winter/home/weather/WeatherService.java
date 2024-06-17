@@ -51,4 +51,9 @@ public class WeatherService {
 	public void getdelete(WeatherDTO weatherDTO) throws Exception {
 
 	}
+
+	// update
+	public void update(WeatherDTO weatherDTO) throws Exception {
+		weatherDAO.update(weatherDTO);
+	}
 }
